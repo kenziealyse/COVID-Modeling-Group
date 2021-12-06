@@ -37,8 +37,7 @@ days_open_vec = (1:length(I_L));
 events_vec = (1:length(I_L));
 
 
- pvals = [];
- values5p = [];
+
 
 for j = 1:10
     
@@ -66,28 +65,35 @@ params = [f, B1, B2, b1, b3, B3];
 days_open_vec(index)      = -Inf;
 maxes(j) = I_L(index);
 
-indices = find(.95*maximum <= days_open_vec);
+indices = find(.95*maximum < days_open_vec);
 
 
 
 for i = 1:length(indices)
     
-    values5p = [values5p;days_open_vec(indices(i))]; 
+    values5p(i + length(days_open_vec)*j) = days_open_vec(indices(i)); 
     
-    pvals = [pvals;I_L(indices(i))];
+    pvals(i+ length(days_open_vec)*j) = I_L(indices(i));
     
     
 end
 
 
+days_open_vec(index)      = maxes(j);
+
+
 
 end
+
+values5p = nonzeros(values5p);
+
+pvals = nonzeros(pvals);
 
 results(:,1) = pvals;
 
 results(:,2) = values5p;
 
-results
+results;
 
 
 
@@ -105,5 +111,7 @@ yaxisTitle = 'Change in B_1 Values';
     
 % Plot Histogram
 
-histogram(pvals, 200)
+plothistofxn(pvals, 200)
+
+ylim([0 100])
 
