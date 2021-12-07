@@ -44,7 +44,7 @@ for j = 1:10
     
 % Define Parameter Values
     
-[f, B1, B2, b1, b3, B3, vR_U] = defineParameters(0.85, 0, 0, 0, 0, 0, 0);
+[f, B1, B2, b1, b3, B3, vR_U] = defineParameters(0.85, 0, 0, 0, 0, 0, 1);
 
 params = [f, B1, B2, b1, b3, B3];
 
@@ -66,7 +66,7 @@ params = [f, B1, B2, b1, b3, B3];
 days_open_vec(index)      = -Inf;
 maxes(j) = I_L(index);
 
-indices = find(.95*maximum <= days_open_vec);
+indices = find(.9*maximum <= days_open_vec);
 
 
 
