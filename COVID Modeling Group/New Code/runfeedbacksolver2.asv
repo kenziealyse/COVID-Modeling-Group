@@ -25,7 +25,7 @@ event_start = 1;
 
 % Set upper and lower infected population bounds
 
-I_L = (0:.01:.035); 
+I_L = (0:.001:.035); 
 I_U = 0.05;
 vR_L = 0;
 tR_L = 0;
@@ -36,9 +36,10 @@ tR_U = 0.1;
 days_open_vec = (1:length(I_L));
 events_vec = (1:length(I_L));
 
+% Create Empty Vectors 
 
- pvals = [];
- values5p = [];
+pvals = [];
+values5p = [];
 
 for j = 1:10
     
@@ -61,6 +62,9 @@ params = [f, B1, B2, b1, b3, B3];
     
     end
 
+
+plot(I_L,days_open_vec);
+hold on    
     
 [maximum, index] = max(days_open_vec);
 days_open_vec(index)      = -Inf;
@@ -83,21 +87,10 @@ end
 
 end
 
-results(:,1) = pvals;
-
-results(:,2) = values5p;
-
-results;
-
-
-
-% Heat map plot
-
-yaxisTitle = 'Change in B_1 Values';
-
-%heatMapPlot(I_L, vR, days_open_vec, yaxisTitle)
-
-% Feedback Plot 
+title('COVID Feedback Plot Days Open Versus P', 'Fontsize',20)
+xlabel('P', 'Fontsize',17)
+ylabel('Days', 'Fontsize',17)
+grid on
 
 
 % Calculuate Infected Population
@@ -106,46 +99,37 @@ I = I1a + I2;
 
 % PLOT THE RESULTS
 
-% figure
-% 
-% yline(I_U*100, '--', 'lineWidth', 2);
-% hold on
-% plot(T, 100*I, 'r', 'LineWidth',3);
-% hold on
-% plot(T, 100*vR, 'b', 'LineWidth',3);
-% hold on
-% yline(I_L*100, '--', 'lineWidth', 2);
-% legend('Total Infected','vR', 'FontSize',16);
-% ylabel('Percent of Population Infected', 'FontSize',16);
-% xlabel('Time (days)', 'FontSize',16);
-% title('Covid Feedback Plot', 'FontSize',16);
-% xlim([0 100])
-% ylim([0 45])
+figure(2)
 
+yline(I_L(end)*100, '--', 'lineWidth', 2);
+hold on
+yline(I_U*100, '--', 'lineWidth', 2);
+hold on
+plot(T, 100*I, 'r', 'LineWidth',3);
+hold on
+plot(T, 100*vR, 'b', 'LineWidth',3);
+legend('Total Infected','vR', 'FontSize',16);
+ylabel('Percent of Population Infected', 'FontSize',17);
+xlabel('Time (days)', 'FontSize',17);
+title('Covid Feedback Plot', 'FontSize',20);
+xlim([0 100])
+ylim([0 45])
 
-% PLOT THE RESULTS
-
-figure
-
-plot(I_L, days_open_vec, 'r', 'LineWidth',3);
-ylabel('Days', 'FontSize',16);
-xlabel('P', 'FontSize',16);
-title('Covid Feedback Plot Days Open', 'FontSize',16);
-xlim([0 max(I_L)])
-ylim([0 100])
-
-% figure 
-% 
-% plot(I_L, events_vec, 'b', 'LineWidth',3);
-% ylabel('Closures', 'FontSize',16);
-% xlabel('P', 'FontSize',16);
-% title('Covid Feedback Plot Days Open', 'FontSize',16);
     
 % Plot Histogram
 
-figure
+figure(3)
 
-histogram(pvals, 4)
-title('P Values that Result in Maximum Days Open', 'FontSize', 17)
-xlabel('Number of P Value Occurence', 'FontSize', 15)
-ylabel('P Value', 'FontSize', 15)
+var(pvals);
+
+histogram(pvals, 3)
+title('P Values Resulting in Maximum Days Open', 'FontSize', 20)
+xlabel('Number of P Value Occurence', 'FontSize', 17)
+ylabel('P Value', 'FontSize', 17)
+% 
+% binranges = 0:0.4
+% [~,binIndex] = histc(pvals, binranges)
+
+counts = hist(pvals, 4)
+
+countVariance = var(counts)
