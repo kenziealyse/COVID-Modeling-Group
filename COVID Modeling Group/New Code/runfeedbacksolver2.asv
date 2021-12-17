@@ -93,7 +93,7 @@ end
 
 end
 
-% Add titles to I_L versus Days open Plot
+% Add titles to I
 
 title('COVID Feedback Plot Days Open Versus P', 'Fontsize',20)
 xlabel('P', 'Fontsize',17)
@@ -138,8 +138,6 @@ xlabel('Number of P Value Occurence', 'FontSize', 17)
 ylabel('P Value', 'FontSize', 17)
 
 
-% Find the p values within each bin
-
 for i = 1:length(pvals)
     
 if (edges(1) <= pvals(i)) && (pvals(i) <= edges(2))
@@ -164,7 +162,6 @@ end
 
 end
 
-% Calculate the variance for the p values
 
 pval1 = nonzeros(pval1)
 pval2 = nonzeros(pval2)

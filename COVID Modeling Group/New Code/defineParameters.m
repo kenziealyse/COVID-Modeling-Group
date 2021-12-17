@@ -2,6 +2,11 @@ function [f, B1, B2, b1, b3, B3, vR_U] = defineParameters(f, B1b, B2b...
     , b1b, b3b, B3b, vR_Ub)
 
 
+% Set range so that we get same random number every time
+
+rng(42)
+
+
 % Parameters min and max values
 
 B1_vec = (0.143:0.001:0.224);
