@@ -25,7 +25,7 @@ event_start = 1;
 
 % Set upper and lower infected population bounds
 
-I_L = .03; 
+I_L = .01; 
 I_U = 0.05;
 vR_L = 0;
 tR_L = 0;

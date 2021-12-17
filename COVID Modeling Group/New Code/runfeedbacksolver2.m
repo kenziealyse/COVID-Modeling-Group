@@ -3,6 +3,8 @@
 clear all;
 close all;
 
+rng(42)
+
 
 % Fix Parameter Values
 
