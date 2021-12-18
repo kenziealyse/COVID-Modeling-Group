@@ -1,4 +1,4 @@
-function [T, S_total, I1u_total, I1a_total, I2_total, R_total, vR, tR, days_open, days_closed, event_counter] = covid_feedback_solver(t0, final_time, init_conds, params,...
+function [T, S_total, I1u_total, I1a_total, I2_total, R_total, vR, tR, days_open, days_closed, event_counter, closures] = covid_feedback_solver(t0, final_time, init_conds, params,...
     I_L, I_U, vR_L, vR_U, tR_L, tR_U, event_start)
 
 
@@ -38,6 +38,8 @@ current_time = t0;
 current_event = event_start;
 
 current_init_conds = init_conds;
+
+closures = 0;
 
 % Create Vectors to store Solutions
 
@@ -84,6 +86,7 @@ while current_time < final_time
         vR_temp = vR_L*ones(length(T_curr)-1,1);
         tR_temp = tR_L*ones(length(T_curr)-1,1);
         days_closed = days_closed + (temp_time_end - temp_time_start);
+        closures = closures + 1;
     else
         vR_temp = vR_U*ones(length(T_curr)-1,1);
         tR_temp = tR_U*ones(length(T_curr)-1,1);

@@ -43,15 +43,13 @@ events_vec = (1:length(I_L));
 pvals = [];
 values5p = [];
 
-for j = 1:3
+for j = 1:4
     
 % Define Parameter Values
     
-[f, B1, B2, b1, b3, B3, vR_U] = defineParameters(0.85, 0, 0, 0, 0, 0, 1);
+[f, B1, B2, b1, b3, B3, vR_U] = defineParameters(0.85, 0, 0, 0, 0, 0, 1,0,1);
 
 params = [f, B1, B2, b1, b3, B3];
-
-vR_U = 1;
     
     for i = 1:length(I_L)
     
@@ -67,7 +65,7 @@ vR_U = 1;
 
 % Plots I_L versus Days open for every random variable
     
-plot(I_L,days_open_vec, 'LineWidth',3);
+plot(I_L,days_open_vec, 'LineWidth',1.5);
 legendInfo{j} = ['vR = ' num2str(vR_U)];
 hold on    
     
@@ -99,9 +97,10 @@ end
 
 % Add titles to I_L versus Days open Plot
 
-title('COVID Feedback Plot Days Open Versus P (v_R = 1)', 'Fontsize',20)
+title('COVID Feedback Plot Days Open Versus P', 'Fontsize',20)
 xlabel('P', 'Fontsize',17)
 ylabel('Days', 'Fontsize',17)
+legend(legendInfo)
 grid on
 
 
@@ -170,10 +169,10 @@ end
 
 % Calculate the variance for the p values
 
-pval1 = nonzeros(pval1)
-pval2 = nonzeros(pval2)
-pval3 = nonzeros(pval3)
+pval1 = nonzeros(pval1);
+pval2 = nonzeros(pval2);
+pval3 = nonzeros(pval3);
 
-var(pval1)
-var(pval2)
-var(pval3)
+p1var = var(pval1)
+p2var= var(pval2)
+p3var = var(pval3)

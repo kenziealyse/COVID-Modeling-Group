@@ -1,5 +1,5 @@
 function [f, B1, B2, b1, b3, B3, vR_U] = defineParameters(f, B1b, B2b...
-    , b1b, b3b, B3b, vR_Ub, low_vr_vec, vr_all)
+    , b1b, b3b, B3b, vR_Ub)
 
 
 % Set range so that we get same random number every time
@@ -12,23 +12,8 @@ function [f, B1, B2, b1, b3, B3, vR_U] = defineParameters(f, B1b, B2b...
 B1_vec = (0.143:0.001:0.224);
 B2_vec = (0.053:0.001:0.085);
 B3_vec = (0.042:0.001:0.058); 
-
-
-if low_vr_vec == 1 
-    
-    vR_U_vec = (0.3:.01:.6);
-
-else
-    vR_U_vec = (1:.01:2);
-
-end
-
-
-if vr_all == 1
-    
-    vR_U_vec = (0.45:.001:2); 
-end
-
+vR_U_vec = (0.45:.001:2); 
+[.4:.5:.6]
 
 
 if vR_Ub == 1

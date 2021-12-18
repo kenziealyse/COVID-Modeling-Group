@@ -25,7 +25,7 @@ event_start = 1;
 
 % Set upper and lower infected population bounds
 
-I_L = .01; 
+I_L = .031; 
 I_U = 0.05;
 vR_L = 0;
 tR_L = 0;
@@ -38,24 +38,30 @@ events_vec = (1:length(I_L));
     
 % Define Parameter Values
     
-[f, B1, B2, b1, b3, B3, vR_U] = defineParameters(0.85, 0, 0, 0, 0, 0, 0);
+[f, B1, B2, b1, b3, B3, vR_U] = defineParameters(0.85, 0, 0, 0, 0, 0, 0,0,1);
 
 params = [f, B1, B2, b1, b3, B3];
-
     
+vR_U = 1
 
-    
-
-[T, S, I1u, I1a, I2, R, vR, tR, days_open, days_closed, event_counter] = covid_feedback_solver(t0, final_time, init_conds, params,...
+[T, S, I1u, I1a, I2, R, vR, tR, days_open, days_closed, event_counter, closures] = covid_feedback_solver(t0, final_time, init_conds, params,...
 I_L, I_U, vR_L, vR_U, tR_L, tR_U, event_start);
 
-num_of_days_open = days_open - event_counter
 
-num_of_closing_events = event_counter
+
+num_of_days_open = days_open - event_counter;
+
+avg_days_open = num_of_days_open/event_counter;
+
+avg_days_closed = days_closed/closures;
+
+Table = table(num_of_days_open, closures, avg_days_open, avg_days_closed)
+
 
 % Calculuate Infected Population
 
 I = I1a + I2;
+
 
 % PLOT THE RESULTS
 
