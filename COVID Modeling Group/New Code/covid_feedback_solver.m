@@ -81,6 +81,7 @@ while current_time < final_time
     temp_time_start = fix(T_curr(1));
     
     temp_time_end = fix(T_curr(end));
+    
 
     if current_event == 0
         vR_temp = vR_L*ones(length(T_curr)-1,1);
@@ -111,7 +112,7 @@ while current_time < final_time
     
     % A switch occurred, so reverse them ( will change current event
     % between 0 and 1)
-    
+
     current_event = 1 - current_event;
     
     

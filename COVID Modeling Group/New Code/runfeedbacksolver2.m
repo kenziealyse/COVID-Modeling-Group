@@ -3,17 +3,6 @@
 clear all;
 close all;
 
-
-% Fix Parameter Values
-
-f  = 0.85;
-B1b = 0;
-B2b = 0;
-b1b = 0;
-b3b = 0;
-B3b = 0;  
-
-
 % Fix Initial Conditions
 
 t0 = 0;
@@ -29,11 +18,7 @@ I_L = (0:.001:.035);
 I_U = 0.05;
 vR_L = 0;
 tR_L = 0;
-tR_U = 0.1;
-
-% Set Vectors 
-
-% Run the solver
+tR_U = 0.75;
 
 days_open_vec = (1:length(I_L));
 events_vec = (1:length(I_L));
@@ -43,18 +28,22 @@ events_vec = (1:length(I_L));
 pvals = [];
 values5p = [];
 
-for j = 1:3
+for j = 1:1
     
 % Define Parameter Values
     
-[f, B1, B2, b1, b3, B3, vR_U] = defineParameters(0.85, 0, 0, 0, 0, 0, 1);
+[f, B1, B2, b1, b3, B3, vR_U] = defineParameters(0.85, 0, 0, 0, 0, 0);
+
+b1_start = B1_vec(1);
+b1_end = B1_vec(end);
+b1 = (b1_end-b1_start).*rand(1) + b1_start;
 
 params = [f, B1, B2, b1, b3, B3];
 
 vR_U = 1;
     
     for i = 1:length(I_L)
-    
+        
     
     [T, S, I1u, I1a, I2, R, vR, tR, days_open, days_closed, event_counter, closures] = covid_feedback_solver(t0, final_time, init_conds, params,...
     I_L(i), I_U, vR_L, vR_U, tR_L, tR_U, event_start);
@@ -62,13 +51,16 @@ vR_U = 1;
     days_open_vec(i) = days_open - event_counter;
     
     events_vec(i) = event_counter;
+
     
     end
+    
+    
 
 % Plots I_L versus Days open for every random variable
-    
-plot(I_L,days_open_vec, 'LineWidth',3);
-legendInfo{j} = ['vR = ' num2str(vR_U)];
+
+legendInfo = ['\beta_1 = ' num2str(b1)];
+plot(I_L,days_open_vec,'DisplayName',legendInfo, 'LineWidth',2);
 hold on    
     
 % Find maximum number of days open
@@ -99,10 +91,11 @@ end
 
 % Add titles to I_L versus Days open Plot
 
-title('COVID Feedback Plot Days Open Versus P (v_R = 1)', 'Fontsize',20)
+title('COVID Feedback Plot Days Open Versus P', 'Fontsize',20)
 xlabel('P', 'Fontsize',17)
 ylabel('Days', 'Fontsize',17)
 grid on
+legend show
 
 
 % Calculuate Infected Population

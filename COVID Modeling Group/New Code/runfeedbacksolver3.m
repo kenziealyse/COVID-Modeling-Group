@@ -47,7 +47,7 @@ for j = 1:4
     
 % Define Parameter Values
     
-[f, B1, B2, b1, b3, B3, vR_U] = defineParameters(0.85, 0, 0, 0, 0, 0, 1,0,1);
+[f, B1, B2, b1, b3, B3, vR_U] = defineParameters(0.85, 0, 0, 0, 0, 0, 0,0,0);
 
 params = [f, B1, B2, b1, b3, B3];
     
@@ -66,7 +66,7 @@ params = [f, B1, B2, b1, b3, B3];
 % Plots I_L versus Days open for every random variable
     
 plot(I_L,days_open_vec, 'LineWidth',1.5);
-legendInfo{j} = ['vR = ' num2str(vR_U)];
+legendInfo{j} = ['B1 = ' num2str(B1)];
 hold on    
     
 % Find maximum number of days open

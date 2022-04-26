@@ -29,7 +29,7 @@ I_L = (0:.01:.035);
 I_U = 0.05;
 vR_L = 0;
 tR_L = 0;
-tR_U = 0.1;
+tR_U = 0.5;
 
 % Run the solver
 
@@ -40,11 +40,12 @@ events_vec = (1:length(I_L));
  pvals = [];
  values5p = [];
 
-for j = 1:10
+for j = 1:4
     
 % Define Parameter Values
     
-[f, B1, B2, b1, b3, B3, vR_U] = defineParameters(0.85, 0, 0, 0, 0, 0, 1);
+[f, B1, B2, b1, b3, B3, vR_U] = defineParameters(0.85, 0, 0, 0, 0, 0);
+
 
 params = [f, B1, B2, b1, b3, B3];
 

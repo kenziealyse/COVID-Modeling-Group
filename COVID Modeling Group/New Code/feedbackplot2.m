@@ -6,13 +6,15 @@ close all;
 
 % Fix Parameter Values
 
-f  = 0.85;
-B1b = 0;
-B2b = 0;
-b1b = 0;
-b3b = 0;
-B3b = 0;  
 
+f  = 0.85;
+B1 = 0.143;
+B2 = 0.06;
+b1 = 0.143;
+b3 = 0.05;
+B3 = 0.05; 
+
+params = [f, B1, B2, b1, b3, B3];
 
 % Fix Initial Conditions
 
@@ -25,24 +27,18 @@ event_start = 1;
 
 % Set upper and lower infected population bounds
 
-I_L = .031; 
+I_L = .002;
 I_U = 0.05;
 vR_L = 0;
 tR_L = 0;
 tR_U = 0.1;
+vR_U = .5;
 
 % Run the solver
 
 days_open_vec = (1:length(I_L));
 events_vec = (1:length(I_L));
-    
-% Define Parameter Values
-    
-[f, B1, B2, b1, b3, B3, vR_U] = defineParameters(0.85, 0, 0, 0, 0, 0, 0,0,1);
 
-params = [f, B1, B2, b1, b3, B3];
-    
-vR_U = 1
 
 [T, S, I1u, I1a, I2, R, vR, tR, days_open, days_closed, event_counter, closures] = covid_feedback_solver(t0, final_time, init_conds, params,...
 I_L, I_U, vR_L, vR_U, tR_L, tR_U, event_start);

@@ -1,10 +1,16 @@
 function [f, B1, B2, b1, b3, B3, vR_U] = defineParameters(f, B1b, B2b...
-    , b1b, b3b, B3b, vR_Ub, low_vr_vec, vr_all)
+    , b1b, b3b, B3b)
 
 
 % Set range so that we get same random number every time
 
 % rng(42)
+
+low_vr_vec = 0;
+
+vr_all = 0;
+
+vR_Ub = 1;
 
 
 % Parameters min and max values
