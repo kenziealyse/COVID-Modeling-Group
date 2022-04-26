@@ -62,7 +62,7 @@ end
 
 %COVID FUNCTION
 
-function dY_dt = covid(t,Y,vR,tR,f,B1,B2,b1,b3,B3)
+function dY_dt = covid(~,Y,vR,tR,f,B1,B2,b1,b3,B3)
 
 % Relabel to easily keep track of compartments
 S = Y(1);
