@@ -1,10 +1,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% File is used to plot a feedback plot. The idea is to shut down when the 
-% infected population reaches a certain prespecified infected population 
-% (the upper bound). When the shutdown occurs, the lower bounds for tR and 
-% vR are used in order to mimic a lockdown. Then, when the infected
-% population reaches the lower bound specified there is a reopening and tR
-% and vR go back to their upper bound values.
+% File is used to plot a feedback plot of the number of days open 
+% and 
+%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % CLEAR THE WORKSPACE
