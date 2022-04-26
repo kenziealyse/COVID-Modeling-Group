@@ -1,6 +1,35 @@
 function [f, B1, B2, b1, b3, B3, vR_U] = defineParameters(f, B1b, B2b...
     , b1b, b3b, B3b, low_vr, high_vr, vR_Ub)
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Function is used to define model parameters either randomly within a 
+% certain range or with a prespecified value using boolean expressions.
+%
+%Inputs (0 to randomize, 1 to set with prespecified value): 
+%
+%   f - fraction of true positives
+%   B1b - 0 or 1 
+%   b2B - 0 or 1 
+%   b1b - 0 or 1 
+%   b3b - 0 or 1 
+%   B3b - 0 or 1 
+%   low_vr - 0 or 1 
+%   low_vr - 0 or 1 
+%   high_vr - 0 or 1 
+%   vR_Ub - 0 or 1 
+%
+%Outputs:
+%
+%   f = fraction of true positives
+%   B1 = value for beta 1
+%   B2 = value for beta 2
+%   b1 = value for beta 1 tilde
+%   b3 = value for beta 3 tilde
+%   B3 = value for beta 3
+%   vR_U = value for the upper value of Vr
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 
 % Parameters min and max values
 
