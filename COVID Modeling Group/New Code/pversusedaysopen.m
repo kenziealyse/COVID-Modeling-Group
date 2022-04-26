@@ -2,9 +2,7 @@
 % This file is used for plotting p (I_l) versus days open. In the file
 % we use defineParameters to randomly choose different parameters. We then
 % run the the covid feedback solver for the randomly chosen variable and
-% plot the days open versus p as well as a histogram of all the p values
-% that resulted in a number of days open within 10% of the maximum number
-% of days open.
+% plot the days open versus p. 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
@@ -138,16 +136,3 @@ xlabel('\bf $\tilde{p}$', 'Interpreter','latex', 'Fontsize',17)
 ylabel('\bf Days (t_{open})', 'Fontsize',17)
 legend(legendInfo, 'Location', 'best')
 grid on
-
-    
-% Plot Histogram
-
-figure(2)
-
-[N,edges] = histcounts(pvals,3);
-
-
-histogram(pvals,75)
-title('\bf $\tilde{p}$ Values Resulting in Maximum Days Open','Interpreter','latex', 'FontSize', 20)
-xlabel('\bf $\tilde{p}$ Value','Interpreter','latex', 'FontSize', 17)
-ylabel('\bf Number of $\tilde{p}$ Value Occurences','Interpreter','latex', 'FontSize', 17)
