@@ -25,7 +25,7 @@ else
     
 end
 
-% If vR_Ub == 1 then randomize the value for vR. Else, set vR = 0.45
+
 
 if vR_Ub == 1
     
@@ -38,8 +38,6 @@ else
 end
 
 
-% If B1b == 1 then randomize the value for B1. Else, set B1 = 0.143
-
 if B1b == 1
     
     b1_start = B1_vec(1);
@@ -51,9 +49,6 @@ else
     B1 = 0.143;
     
 end
-
-
-% If B2b == 1 then randomize the value for B2. Else, set B2 = 0.06
 
 if B2b == 1
     
@@ -69,8 +64,6 @@ else
 end
 
 
-% If b1b == 1 then randomize the value for b1. Else, set b1 = 0.143
-
 if  b1b == 1
     
     b1_start = B1_vec(1);
@@ -83,8 +76,6 @@ else
 end
 
 
-% If b3b == 1 then randomize the value for b3. Else, set b3 = 0.05
-
 if b3b == 1
 
     b3_start = B3_vec(1);
@@ -94,9 +85,6 @@ if b3b == 1
 else
    b3 = 0.05; 
 end
-
-
-% If B3b == 1 then randomize the value for B3. Else, set B3 = 0.05
 
 if B3b == 1
     
