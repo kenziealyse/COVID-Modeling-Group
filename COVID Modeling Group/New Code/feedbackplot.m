@@ -73,18 +73,30 @@ I = I1a + I2;
 
 % PLOT THE RESULTS
 
-figure(1)
+figure(2)
 
+fig = figure(2);
+
+left_color = [1 0 0];
+right_color = [0 0 1];
+set(fig,'defaultAxesColorOrder',[left_color; right_color]);
+
+yyaxis right
+plot(T, 100*vR, 'b', 'LineWidth',3);
+ylabel('\bf $100*v_r$', 'Interpreter','latex', 'FontSize',17);
+
+yyaxis left
 plot(T, 100*I, 'r', 'LineWidth',3);
 hold on
-plot(T, 100*vR, 'b', 'LineWidth',3);
-hold on
-yline(I_L*100, '--', 'lineWidth', 2);
-hold on
 yline(I_U*100, '--', 'lineWidth', 2);
-legend('Total Infected','vR', 'FontSize',16);
-ylabel('Percent of Population Infected', 'FontSize',17);
-xlabel('Time (days)', 'FontSize',17);
-title('COVID Feedback Plot', 'FontSize',20);
+hold on
+yline(I_L(end)*100, '--', 'lineWidth', 2, 'Color', 'green');
+ylabel('\bf Percent of Population Infected', 'FontSize',17);
+
+
+
+legend('Total Infected', 'p', '$\tilde{p}$','$v_r$','Interpreter','latex','FontSize',16, 'Location', 'best','Interpreter','latex');
+xlabel('\bf Time (days)', 'FontSize',17);
+title('\bf Covid Feedback Plot', 'FontSize',20);
 xlim([0 100])
-ylim([0 45])
+

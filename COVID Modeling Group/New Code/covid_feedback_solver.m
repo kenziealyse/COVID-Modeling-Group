@@ -167,11 +167,11 @@ else
 end
 
 
-dS_dt   = -vR_eval*S*I1u/(S + I1u); %eq (1)
-dI1u_dt =  vR_eval*S*I1u/(S + I1u) - (tR_eval*f*(I1u/(S + I1u))) - (B1+B3)*I1u;  %eq (2)
-dI1a_dt =  tR_eval*f*(I1u/(S + I1u)) - (b1+b3)*I1a;  %eq (3)
-dI2_dt  =  B1*I1u + b1*I1a - B2*I2;  %eq (4)
-dR_dt   =  B2*I2 + B3*I1u + b3*I1a;  %eq (5)
+dS_dt   = -vR_eval*S*I1u/(S + I1u); %eq (1) S
+dI1u_dt =  vR_eval*S*I1u/(S + I1u) - (tR_eval*f*(I1u/(S + I1u))) - (B1+B3)*I1u;  %eq (2) I1u
+dI1a_dt =  tR_eval*f*(I1u/(S + I1u)) - (b1+b3)*I1a;  %eq (3) I1a
+dI2_dt  =  B1*I1u + b1*I1a - B2*I2;  %eq (4) I2
+dR_dt   =  B2*I2 + B3*I1u + b3*I1a;  %eq (5) R
 
 dY_dt = [dS_dt; dI1u_dt; dI1a_dt; dI2_dt; dR_dt];
 
