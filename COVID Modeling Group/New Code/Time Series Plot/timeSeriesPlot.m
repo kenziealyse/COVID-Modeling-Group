@@ -18,13 +18,9 @@ params = [f, B1, B2, b1, b3, B3]; % vector of parameter values
 % Fix Initial Conditions
 
 tspan = [0 100];
-
 init_cond = [0.99 .01 0 0 0]';
-
 event = 0;
-
 plotn = 1 ;
-
 
 % Plot for R0 < 1
 

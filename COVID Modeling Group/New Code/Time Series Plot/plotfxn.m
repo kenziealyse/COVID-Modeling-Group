@@ -1,3 +1,17 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Function is used to define model parameters either randomly within a 
+% certain range or with a prespecified value using boolean expressions.
+%
+%Inputs (0 to randomize, 1 to set with prespecified value): 
+%
+%   t -
+%   y - 
+%
+%Outputs:
+%
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 function plotfxn(t, y)
 
     figure 

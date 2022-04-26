@@ -1,3 +1,28 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Inputs:
+%
+%   t0 - initial time
+%   tf - final time
+%   init_conds- initial conditions
+%   params - fixed parameter values
+%   I_lowerBound - Lower Bound of Infections
+%   I_upperbound - Upper Bound of Infections
+%   event_start - whether or not we are starting lockdown (0) or not
+%   lockdown (1)
+%
+%Outputs:
+%
+%
+%
+%
+%
+%
+%
+%
+%
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 function [T, S, I1u, I1a, I2, R] = covidSolver(param, tR, vR, init_cond, tspan, event, plotn)
 
        f  = param(1);

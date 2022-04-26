@@ -1,7 +1,3 @@
-function [T, S_total, I1u_total, I1a_total, I2_total, R_total, vR, tR, days_open, days_closed, event_counter, closures] = covid_feedback_solver(t0, final_time, init_conds, params,...
-    I_L, I_U, vR_L, vR_U, tR_L, tR_U, event_start)
-
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %Inputs:
 %
@@ -26,6 +22,10 @@ function [T, S_total, I1u_total, I1a_total, I2_total, R_total, vR, tR, days_open
 %
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+function [T, S_total, I1u_total, I1a_total, I2_total, R_total, vR, tR, days_open, days_closed, event_counter, closures] = covid_feedback_solver(t0, final_time, init_conds, params,...
+    I_L, I_U, vR_L, vR_U, tR_L, tR_U, event_start)
+
 
 days_open = 0;
 
