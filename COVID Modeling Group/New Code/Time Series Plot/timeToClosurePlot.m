@@ -1,4 +1,8 @@
-
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% This file is used for plotting bar graph of the number of days open while
+% varying Tr for a high and low vR value and varying vR for a high and low
+% Tr value.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %CLEAR THE WORKSPACE
 
@@ -33,6 +37,7 @@ tR_values = 0:.1:1;
 time_tR1 = zeros(1,length(tR_values));
 time_tR2 = zeros(1,length(tR_values));
 
+% Set High vR Value
 
 vR = 0.5;
 
@@ -45,6 +50,8 @@ for j = 1:length(tR_values)
         
 end
 
+% Set Low vR Value
+
 vR = 0.3;
 
 for j = 1:length(tR_values)
@@ -54,6 +61,8 @@ for j = 1:length(tR_values)
         time_tR2(j) = T(end); 
         
 end
+
+% Plot figure for varying tR
 
 figure(1)
 
@@ -67,7 +76,10 @@ hold off
 title('Time to Closure (t_c)','FontSize',20)
 xlabel('Transmission Rate (T_r)','FontSize',18)
 ylabel('Time (days)','FontSize',18)
-legend('Low v_r Value (v_r = 0.3)', 'High v_r Value (v_r = 0.5)', '90 Day Semester');
+xticks([0:.1:1])
+yticks([0:10:100])
+legend('Low v_r Value (v_r = 0.3)', 'High v_r Value (v_r = 0.5)', '90 Day Semester',...
+    'Location','best', 'fontsize', 17);
 
 
 vR_values = 0:.1:1;
@@ -77,17 +89,22 @@ vR_values = 0:.1:1;
 time_vR1 = zeros(1,length(vR_values));
 time_vR2 = zeros(1,length(vR_values));
 
+
+% Set high tR Value
+
 tR = 1;
 
 
 for j = 1:length(vR_values)
-    
-
-        [T, S, I1u, I1a, I2, R] = covidSolver(params, tR, vR_values(j), init_cond, tspan, event, plotn);
+   
+            
+        [T, ~, ~, ~, ~, ~] = covidSolver(params, tR, vR_values(j), init_cond, tspan, event, plotn);
         
         time_vR1(j) = T(end);
         
 end
+
+% Set Low tR Value
 
 tR = 0.5;
 
@@ -100,9 +117,9 @@ for j = 1:length(vR_values)
         
 end
 
+% Plot figure for varying vR
+
 figure(2)
-
-
 
 bar(y,time_vR1, 'r')
 hold on
@@ -112,10 +129,13 @@ yline(90,'-.','linewidth',3)
 hold off
 
 title('Time to Closure (t_c)','FontSize',20)
-xlabel('Transmission Rate (T_r)','FontSize',18)
+xlabel('Infection Rate (v_r)','FontSize',18)
 ylabel('Time (days)','FontSize',18)
+xticks([0:.1:1])
+yticks([0:10:100])
 
 
-legend('High T_r Value (T_r = 1)', 'Low T_r Value (T_r = 0.5)', '90 Day Semester');
+legend('High T_r Value (T_r = 1)', 'Low T_r Value (T_r = 0.5)', '90 Day Semester',...
+    'Location','best', 'fontsize', 17);
 
 
