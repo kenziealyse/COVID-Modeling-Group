@@ -6,7 +6,7 @@
 
 % Fix Parameter Values
 
-f  = 0.85;   % Fraction of true positives
+f  = 0.58;   % Fraction of true positives
 B1 = 0.143;  % beta 1
 B2 = 0.06;   % beta 2
 b1 = 0.143;  % beta 1 tilde

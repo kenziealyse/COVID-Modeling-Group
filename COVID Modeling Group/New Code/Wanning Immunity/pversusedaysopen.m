@@ -24,6 +24,21 @@ gamma = 1/90; % gamma
 
 params = [f, B1, B2, b1, b3, B3, gamma]; % vector of parameter values
 
+% Boolean Values for Randomizing Parameters (1 to randomize)
+
+B1b = 0;
+B2b = 0;
+b1b = 0;
+b3b = 0;
+B3b = 0;
+low_vr = 0;
+high_vr = 0;
+vR_Ub = 0;
+gammab = 1;
+
+varstr = '$\gamma = $'; % Name of variable that is being randomized for the graph
+
+
 
 % Fix Initial Conditions
 
@@ -64,10 +79,11 @@ legendInfo = [];
 maxes = [];
 
 
-for j = 1:10
+for j = 1:4
     
     
-    [f, B1, B2, b1, b3, B3, vR_U, gamma] = defineParameters(f, 1, 0, 0, 0, 0, 1, 0, 0, 0);
+    [f, B1, B2, b1, b3, B3, vR_U, gamma] = defineParameters(f, B1b, B2b...
+    , b1b, b3b, B3b, low_vr, high_vr, vR_Ub, gammab);
     
     params = [f, B1, B2, b1, b3, B3, vR_U, gamma];
 
@@ -95,7 +111,7 @@ for j = 1:10
     % open)
 
     plot(I_L,days_open_vec, 'LineWidth',1.5);
-    legendInfo{j} = ['\beta_1 = ' num2str(B1)];
+    legendInfo{j} = [varstr num2str(gamma)];
     hold on  
 
 % Find maximum number of days open
@@ -135,5 +151,18 @@ end
 
 xlabel('\bf $\tilde{p}$', 'Interpreter','latex', 'Fontsize',17)
 ylabel('\bf Days (t_{open})', 'Fontsize',17)
-legend(legendInfo, 'Location', 'best')
+legend(legendInfo, 'Location', 'best', 'Interpreter', 'Latex')
 grid on
+
+
+% Plot Histogram
+
+figure(2)
+
+[N,edges] = histcounts(pvals,3);
+
+
+histogram(pvals,75)
+title('\bf $\tilde{p}$ Values Resulting in Maximum Days Open','Interpreter','latex', 'FontSize', 20)
+xlabel('\bf $\tilde{p}$ Value','Interpreter','latex', 'FontSize', 17)
+ylabel('\bf Number of $\tilde{p}$ Value Occurences','Interpreter','latex', 'FontSize', 17)
