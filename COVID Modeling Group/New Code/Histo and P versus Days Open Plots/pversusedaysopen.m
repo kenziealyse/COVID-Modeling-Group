@@ -29,12 +29,13 @@ B1b = 0;
 B2b = 0;
 b1b = 0;
 b3b = 0;
-B3b = 1;
+B3b = 0;
+fb = 1;
 low_vr = 0;
 high_vr = 0;
 vR_Ub = 0;
 
-varstr = '$\beta_3 = $'; % Name of variable that is being randomized for the graph
+varstr = '$f = $'; % Name of variable that is being randomized for the graph
 
 
 % Fix Initial Conditions
@@ -79,7 +80,7 @@ maxes = [];
 for j = 1:4
     
     
-    [f, B1, B2, b1, b3, B3, vR_U] = defineParameters(f, B1b, B2b...
+    [f, B1, B2, b1, b3, B3, vR_U] = defineParameters(fb, B1b, B2b...
     , b1b, b3b, B3b, low_vr, high_vr, vR_Ub);
     
     params = [f, B1, B2, b1, b3, B3, vR_U];
@@ -108,7 +109,7 @@ for j = 1:4
     % open)
 
     plot(I_L,days_open_vec, 'LineWidth',1.5);
-    legendInfo{j} = [varstr num2str(B1)];
+    legendInfo{j} = [varstr num2str(f)];
     hold on  
 
 % Find maximum number of days open
