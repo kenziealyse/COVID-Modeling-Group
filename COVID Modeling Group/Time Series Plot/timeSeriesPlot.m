@@ -27,7 +27,9 @@ plotn = 1 ;
 tR = 0.4;    % testing rate (tr)
 vR = 0.5;    % infection rate (vr)
 
-covidSolver(params, tR, vR, init_cond, tspan, event, plotn);
+[T, S, I1u, I1a, I2, R] = covidSolver(params, tR, vR, init_cond, tspan, event, plotn);
+
+max(I2)
 
 % Plot for R0 > 1
 

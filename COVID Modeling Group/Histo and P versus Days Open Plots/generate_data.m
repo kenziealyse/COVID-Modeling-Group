@@ -4,12 +4,8 @@
 % run the the covid feedback solver for the randomly chosen variable and
 % plot the days open versus p. 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-
-% CLEAR THE WORKSPACE
-
-clear all;
-close all;
+function [days_open_vec, I_L, pvals] = generate_data(B1b, B2b, b1b, b3b, B3b, ...
+    fb, low_vr, high_vr, vR_Ub, varstr, var1)
 
 
 % Fix Parameter Values
@@ -22,21 +18,6 @@ b3 = 0.05;   % beta 3 tilde
 B3 = 0.05;   % beta 3
 
 params = [f, B1, B2, b1, b3, B3]; % vector of parameter values
-
-% Boolean Values for Randomizing Parameters (1 to randomize)
-
-B1b = 0;
-B2b = 0;
-b1b = 0;
-b3b = 0;
-B3b = 0;
-fb = 1;
-low_vr = 0;
-high_vr = 0;
-vR_Ub = 0;
-
-varstr = '$f = $'; % Name of variable that is being randomized for the graph
-
 
 % Fix Initial Conditions
 
@@ -57,15 +38,6 @@ tR_U = 0.1;
 vR_U_vec = (1.01);
 
 
-% Prepicked Random Values
-
-%vR_U_vec = [0.35199, 0.34693, 0.37507, 0.46477]; %low vr
-% vR_U_vec = [1.2477, 1.356, 1.7578, 1.0144]; % high vr
-% vR_U_vec = [0.62991, 0.5213, 0.51313, 1.776]; % all vr
-% B1_vec = (0.143:0.01:0.224); % B1 vectors
-% B2_vec = (0.053:0.001:0.085); %B2 vectors
-
-
 % Preallocate Space 
 
 days_open_vec = (1:length(I_L));
@@ -82,7 +54,7 @@ for j = 1:4
     
     [f, B1, B2, b1, b3, B3, vR_U] = defineParameters(fb, B1b, B2b...
     , b1b, b3b, B3b, low_vr, high_vr, vR_Ub);
-    
+
     params = [f, B1, B2, b1, b3, B3, vR_U];
 
     % Run the Covid Feedback Solver for Various p values (I_L)
@@ -105,12 +77,12 @@ for j = 1:4
     end
     
 
-    % Plots I_L versus Days open for every random variable (p versus days
-    % open)
-
-    plot(I_L,days_open_vec, 'LineWidth',1.5);
-    legendInfo{j} = [varstr num2str(f)];
-    hold on  
+%     % Plots I_L versus Days open for every random variable (p versus days
+%     % open)
+% 
+%     plot(I_L,days_open_vec, 'LineWidth',1.5);
+%     legendInfo{j} = [varstr num2str(var1)];
+%     hold on  
 
 % Find maximum number of days open
     
@@ -145,21 +117,9 @@ for j = 1:4
 end
 
 
-% Add titles to I_L versus Days open Plot (plotted in loop)
-
-xlabel('\bf $\tilde{p}$', 'Interpreter','latex', 'Fontsize',17)
-ylabel('\bf Days (t_{open})', 'Fontsize',17)
-legend(legendInfo, 'Location', 'best', 'Interpreter','latex')
-grid on
-
-% Plot Histogram
-
-figure(2)
-
-[N,edges] = histcounts(pvals,3);
-
-
-histogram(pvals,75)
-title('\bf $\tilde{p}$ Values Resulting in Maximum Days Open','Interpreter','latex', 'FontSize', 20)
-xlabel('\bf $\tilde{p}$ Value','Interpreter','latex', 'FontSize', 17)
-ylabel('\bf Number of $\tilde{p}$ Value Occurences','Interpreter','latex', 'FontSize', 17)
+% % Add titles to I_L versus Days open Plot (plotted in loop)
+% 
+% xlabel('\bf $\tilde{p}$', 'Interpreter','latex', 'Fontsize',17)
+% ylabel('\bf Days (t_{open})', 'Fontsize',17)
+% legend(legendInfo, 'Location', 'best', 'Interpreter','latex')
+% grid on
