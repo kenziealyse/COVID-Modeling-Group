@@ -5,19 +5,7 @@
 % plot the days open versus p. 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 function [days_open_vec, I_L, pvals] = generate_data(B1b, B2b, b1b, b3b, B3b, ...
-    fb, low_vr, high_vr, vR_Ub, varstr, var1)
-
-
-% Fix Parameter Values
-
-f  = 0.85;   % Fraction of true positives
-B1 = 0.143;  % beta 1
-B2 = 0.06;   % beta 2
-b1 = 0.143;  % beta 1 tilde
-b3 = 0.05;   % beta 3 tilde
-B3 = 0.05;   % beta 3
-
-params = [f, B1, B2, b1, b3, B3]; % vector of parameter values
+    fb, low_vr, high_vr, vR_Ub, varstr, var1, iter)
 
 % Fix Initial Conditions
 
@@ -35,7 +23,6 @@ I_U = 0.05;
 vR_L = 0;
 tR_L = 0;
 tR_U = 0.1;
-vR_U_vec = (1.01);
 
 
 % Preallocate Space 
@@ -49,7 +36,7 @@ legendInfo = [];
 maxes = [];
 
 
-for j = 1:4
+for j = 1:iter
     
     
     [f, B1, B2, b1, b3, B3, vR_U] = defineParameters(fb, B1b, B2b...
@@ -77,49 +64,37 @@ for j = 1:4
     end
     
 
-%     % Plots I_L versus Days open for every random variable (p versus days
-%     % open)
-% 
-%     plot(I_L,days_open_vec, 'LineWidth',1.5);
-%     legendInfo{j} = [varstr num2str(var1)];
-%     hold on  
+    % Plots I_L versus Days open for every random variable (p versus days
+    % open)
+    plot(I_L,days_open_vec, 'LineWidth',1.5);
+    legendInfo{j} = [varstr num2str(params(var1))];
+    hold on  
 
 % Find maximum number of days open
-    
     % Find the maximum number of days open and the index where it occurs 
-    
     [maximum, index] = max(days_open_vec);
     
     % Set the maximum to negative inf.
-    
-    days_open_vec(index) = -Inf; 
+%     days_open_vec(index) = -Inf; 
     
     % Find the p value that corresponds to that max
-    
     maxes(j) = I_L(index); 
 
     % Find the indices of all values within 10 percent of the maximum
-
     indices = find(.9*maximum <= days_open_vec);
 
-
     % Store values within 10 percent of max into a vector
-
         for i = 1:length(indices)
-
             values5p = [values5p;days_open_vec(indices(i))]; 
-
             pvals = [pvals;I_L(indices(i))];
-
-
         end
 
 end
 
 
-% % Add titles to I_L versus Days open Plot (plotted in loop)
-% 
-% xlabel('\bf $\tilde{p}$', 'Interpreter','latex', 'Fontsize',17)
-% ylabel('\bf Days (t_{open})', 'Fontsize',17)
-% legend(legendInfo, 'Location', 'best', 'Interpreter','latex')
-% grid on
+% Add titles to I_L versus Days open Plot (plotted in loop)
+
+xlabel('\bf $\tilde{p}$', 'Interpreter','latex', 'Fontsize',17)
+ylabel('\bf Days (t_{open})', 'Fontsize',17)
+legend(legendInfo, 'Location', 'best', 'Interpreter','latex')
+grid on
