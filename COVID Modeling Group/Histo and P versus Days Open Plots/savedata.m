@@ -10,7 +10,6 @@
 clear all;
 close all;
 
-
 % Boolean Values for Randomizing Parameters (1 to randomize)
 
 B1b = 1;     %beta 1
@@ -24,18 +23,23 @@ high_vr = 0; %high vr vector values
 vR_Ub = 0;   % vr boolean expression
 
 variable_names = {'$\beta_1 = $', '$\beta_2 = $', '$\tilde{beta_1} = $',...
-    '$\tilde{beta_3} = $', '$\beta_3 = $', '$f = $', '$v_r = $'};
+    '$\tilde{beta_3} = $', '$\beta_3 = $', '$f = $', '$v_r = $', '$v_r = $'}; %legend variable
 
 filenames = {'beta1', 'beta2', 'beta1tilde',...
-    'beta3tilde', 'beta3', 'f', 'vr'};
+    'beta3tilde', 'beta3', 'f', 'lowvr', 'highvr'}; %name file
+
+
+% CHANGE THESE
 
 index = 1; % which string do you want?
 
+var1 = 2; % which variable value in the legend? params = [f, B1, B2, b1, b3, B3, vR_U];
+
+%%%%%%%
+
 varstr = variable_names{index}; % Name of variable that is being randomized for the graph
 
-var1 = 3; % which variable value in the legend? params = [f, B1, B2, b1, b3, B3, vR_U];
-
-iter = 4; % How many iterations? 
+iter = 1000; % How many iterations? 
 
 [days_open_vec, I_L, pvals] = generate_data(B1b, B2b, b1b, b3b, B3b, ...
     fb, low_vr, high_vr, vR_Ub, varstr, var1, iter);

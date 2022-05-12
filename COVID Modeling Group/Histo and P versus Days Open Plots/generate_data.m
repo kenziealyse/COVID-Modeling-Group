@@ -80,8 +80,8 @@ for j = 1:iter
     % Find the p value that corresponds to that max
     maxes(j) = I_L(index); 
 
-    % Find the indices of all values within 10 percent of the maximum
-    indices = find(.9*maximum <= days_open_vec);
+    % Find the indices of all values within 5 percent of the maximum
+    indices = find(.95*maximum <= days_open_vec);
 
     % Store values within 10 percent of max into a vector
         for i = 1:length(indices)
