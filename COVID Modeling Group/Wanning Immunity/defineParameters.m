@@ -27,7 +27,7 @@
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-function [f, B1, B2, b1, b3, B3, vR_U, gamma] = defineParameters(f, B1b, B2b...
+function [f, B1, B2, b1, b3, B3, vR_U, gamma] = defineParameters(fb, B1b, B2b...
     , b1b, b3b, B3b, low_vr, high_vr, vR_Ub, gammab)
 
 
@@ -37,6 +37,7 @@ B1_vec = (0.143:0.001:0.224);
 B2_vec = (0.053:0.001:0.085);
 B3_vec = (0.042:0.001:0.058); 
 gamma_vec = (1/90:0.001:1/30);
+f_vec = (0.5:0.001:1); 
 
 
 % Set vR to be low, high, or both low and high values
@@ -148,5 +149,17 @@ if gammab == 1
 
 else
    gamma = 1/90;   
+end
+
+% If fb == 1 then randomize the value for f. Else, set f = 0.85
+
+if fb == 1
+    
+    f_start = f_vec(1);
+    f_end = f_vec(end);
+    f = (f_end-f_start).*rand(1) + f_start;
+
+else
+   f = 0.85;   
 end
 

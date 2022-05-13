@@ -64,7 +64,7 @@ I1a = Y(3);
 I2 = Y(4);
 R = Y(5);
 
-dS_dt = -vR*S*I1u/(S + I1u) - vR/100*S*I2/(S + I2); %eq (1)
+dS_dt = -vR*S*I1u/(S + I1u) - vR/10*S*I2/(S + I2); %eq (1)
 dI1u_dt =  vR*S*I1u/(S + I1u) + vR/100*S*I2/(S + I2) - (tR*f*(I1u/(S + I1u))) - (B1+B3)*I1u;  %eq (2)
 dI1a_dt =  tR*f*(I1u/(S + I1u)) - (b1+b3)*I1a;  %eq (3)
 dI2_dt =  B1*I1u + b1*I1a - B2*I2;  %eq (4)
