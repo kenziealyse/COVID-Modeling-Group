@@ -29,7 +29,11 @@ vR = 0.5;    % infection rate (vr)
 
 [T, S, I1u, I1a, I2, R] = covidSolver(params, tR, vR, init_cond, tspan, event, plotn);
 
-max(I2)
+figure_name = ['/timeseriesplotR0lessthan1.pdf'];
+    
+dirPath = strcat('/','figures', figure_name); % Directory Path
+    
+saveas(gcf,[pwd dirPath]); % Save Figure in Folder
 
 % Plot for R0 > 1
 
@@ -37,3 +41,9 @@ tR = 0.2;   % testing rate (tr)
 vR = 0.45;  % infection rate (vr)
 
 covidSolver(params, tR, vR, init_cond, tspan, event, plotn);
+
+figure_name = ['/timeseriesplotR0lessthan1.pdf'];
+    
+dirPath = strcat('/','figures', figure_name); % Directory Path
+    
+saveas(gcf,[pwd dirPath]); % Save Figure in Folder
