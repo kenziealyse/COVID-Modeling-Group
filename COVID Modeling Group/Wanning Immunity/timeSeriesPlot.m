@@ -33,6 +33,9 @@ covidSolver(params, tR, vR, init_cond, tspan, event, plotn);
 figure_name = ['/WItimeseriesplotR0lessthan1.pdf'];
     
 dirPath = strcat('/','figures', figure_name); % Directory Path
+set(gcf, 'Units', 'Inches');
+pos = get(gcf, 'Position');
+set(gcf, 'PaperPositionMode', 'Auto', 'PaperUnits', 'Inches', 'PaperSize', [pos(3), pos(4)]);
     
 saveas(gcf,[pwd dirPath]); % Save Figure in Folder
 
@@ -47,6 +50,9 @@ covidSolver(params, tR, vR, init_cond, tspan, event, plotn);
 figure_name = ['/WItimeseriesplotR0greaterthan1.pdf'];
     
 dirPath = strcat('/','figures', figure_name); % Directory Path
+set(gcf, 'Units', 'Inches');
+pos = get(gcf, 'Position');
+set(gcf, 'PaperPositionMode', 'Auto', 'PaperUnits', 'Inches', 'PaperSize', [pos(3), pos(4)]);
     
 saveas(gcf,[pwd dirPath]); % Save Figure in Folder
 

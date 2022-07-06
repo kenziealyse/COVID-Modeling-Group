@@ -6,12 +6,12 @@
 
 % Fix Parameter Values
 
-f  = 0.58;   % Fraction of true positives
-B1 = 0.143;  % beta 1
-B2 = 0.06;   % beta 2
-b1 = 0.143;  % beta 1 tilde
-b3 = 0.05;   % beta 3 tilde
-B3 = 0.05;   % beta 3
+f  = 0.85;    % Fraction of true positives
+B1 = 0.143;   % beta 1
+B2 = 0.06;    % beta 2
+b1 = 0.143;   % beta 1 tilde
+b3 = 0.05;    % beta 3 tilde
+B3 = 0.05;    % beta 3
 
 params = [f, B1, B2, b1, b3, B3]; % vector of parameter values
 
@@ -32,6 +32,10 @@ vR = 0.5;    % infection rate (vr)
 figure_name = ['/timeseriesplotR0lessthan1.pdf'];
     
 dirPath = strcat('/','figures', figure_name); % Directory Path
+
+set(gcf, 'Units', 'Inches');
+pos = get(gcf, 'Position');
+set(gcf, 'PaperPositionMode', 'Auto', 'PaperUnits', 'Inches', 'PaperSize', [pos(3), pos(4)]);
     
 saveas(gcf,[pwd dirPath]); % Save Figure in Folder
 
@@ -42,8 +46,12 @@ vR = 0.45;  % infection rate (vr)
 
 covidSolver(params, tR, vR, init_cond, tspan, event, plotn);
 
-figure_name = ['/timeseriesplotR0lessthan1.pdf'];
+figure_name = ['/timeseriesplotR0greaterthan1.pdf'];
     
 dirPath = strcat('/','figures', figure_name); % Directory Path
+
+set(gcf, 'Units', 'Inches');
+pos = get(gcf, 'Position');
+set(gcf, 'PaperPositionMode', 'Auto', 'PaperUnits', 'Inches', 'PaperSize', [pos(3), pos(4)]);
     
 saveas(gcf,[pwd dirPath]); % Save Figure in Folder

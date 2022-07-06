@@ -20,24 +20,24 @@ tR_U = 0.1;
 B1b = 0;     %beta 1
 B2b = 0;     %beta 2
 b1b = 0;     %beta 1 tilde
-b3b = 0;     %beta 3 tilde
+b3b = 1;     %beta 3 tilde
 B3b = 0;	 %beta 3
 fb = 0;      %f
 gammab = 0;   %gamma
 low_vr = 0;  %low vr vector values
 high_vr = 0; %high vr vector values
-vR_Ub = 1;   % vr boolean expression
+vR_Ub = 0;   % vr boolean expression
 
-variable_names = {'$\beta_1 = $', '$\beta_2 = $', '$\tilde{beta_1} = $',...
-    '$\tilde{beta_3} = $', '$\beta_3 = $', '$f = $', '$\gamma=$', '$v_r = $', '$v_r = $', ...
+variable_names = {'$\beta_1 = $', '$\beta_2 = $', '$\tilde{\beta_1} = $',...
+    '$\tilde{\beta_3} = $', '$\beta_3 = $', '$f = $', '$\gamma=$', '$v_r = $', '$v_r = $', ...
     '$v_r = $'}; %legend variable
 
 filenames = {'beta1', 'beta2', 'beta1tilde',...
     'beta3tilde', 'beta3', 'f', 'gamma', 'lowvr', 'highvr', 'allvr'}; %name file
 
-var1 = 7; %params = [f, B1, B2, b1, b3, B3, vR_U, gamma]
+var1 = 5; %params = [f, B1, B2, b1, b3, B3, vR_U, gamma]
 
-var2 = 10; %filename
+var2 = 4; %filename
 
 iter = 4;
 

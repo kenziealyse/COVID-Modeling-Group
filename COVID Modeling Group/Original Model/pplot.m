@@ -16,11 +16,11 @@ b3b = 0;     %beta 3 tilde
 B3b = 0;	 %beta 3
 fb = 0;      %f
 low_vr = 0;  %low vr vector values
-high_vr = 0; %high vr vector values
+high_vr = 1; %high vr vector values
 vR_Ub = 1;   % vr boolean expression
 
-variable_names = {'$\beta_1 = $', '$\beta_2 = $', '$\tilde{beta_1} = $',...
-    '$\tilde{beta_3} = $', '$\beta_3 = $', '$f = $', '$v_r = $', '$v_r = $', ...
+variable_names = {'$\beta_1 = $', '$\beta_2 = $', '$\tilde{\beta_1} = $',...
+    '$\tilde{\beta_3} = $', '$\beta_3 = $', '$f = $', '$v_r = $', '$v_r = $', ...
     '$v_r = $'}; %legend variable
 
 filenames = {'beta1', 'beta2', 'beta1tilde',...
@@ -30,7 +30,7 @@ iter = 4;
 
 var1 = 7; % params = [f, B1, B2, b1, b3, B3, vR_U]
 
-var2 = 9; % variable names
+var2 = 8; % variable names
 
 % Set upper and lower infected population bounds
 

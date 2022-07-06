@@ -34,10 +34,10 @@ event_start = 1;
 
 % Set upper and lower infected population bounds
 
-I_L = .002; % lower bound for infected population 
+I_L = .015; % lower bound for infected population 
 I_U = 0.05; % upper bound for infected population 
 vR_L = 0;   % lower bound for infected rate (vR)
-vR_U = .5;  % upper bound for infected rate (vR)
+vR_U = 1.1386;  % upper bound for infected rate (vR)
 tR_L = 0;   % lower bound for testing rate (tR)
 tR_U = 0.1; % upper bound for testing rate (tR)
 
@@ -97,6 +97,17 @@ ylabel('\bf Percent of Population Infected', 'FontSize',17);
 
 legend('Total Infected', 'p', '$\tilde{p}$','$v_r$','Interpreter','latex','FontSize',16, 'Location', 'best','Interpreter','latex');
 xlabel('\bf Time (days)', 'FontSize',17);
-title('\bf Covid Feedback Plot', 'FontSize',20);
 xlim([0 100])
+
+set(gcf, 'Units', 'Inches');
+pos = get(gcf, 'Position');
+set(gcf, 'PaperPositionMode', 'Auto', 'PaperUnits', 'Inches', 'PaperSize', [pos(3), pos(4)]);
+
+file_name = num2str(I_L)
+
+figure_name = ['/feedbackplot', file_name, '.pdf'];
+    
+dirPath = strcat('/','figures', figure_name); % Directory Path
+    
+saveas(gcf,[pwd dirPath]); % Save Figure in Folder
 
